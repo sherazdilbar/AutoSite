@@ -1,38 +1,216 @@
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+  font-family: 'Arial', sans-serif;
   min-height: 100vh;
   display: flex;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+.navbar {
+  background-color: #333;
   color: white;
+  padding: 1rem;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
 }
-
-.App-link {
-  color: #61dafb;
+.main-content {
+  margin-top: 60px;
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  grid-auto-flow: dense;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.grid-container {
+  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  flex-wrap: wrap;
+  min-width: 1200px;
+}
+.car-listings {
+  margin: 2rem 0;
+}
+.cars-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  min-width: 1000px;
+}
+.car-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 0.5rem;
+  transition: transform 0.3s;
+  position: relative;
+  height: auto;
+  min-height: 300px;
+  overflow: hidden;
+}
+.car-card:hover {
+  transform: scale(1.05);
+  z-index: 100;
+}
+.price {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #2c3e50;
+  background-color: #ecf0f1;
+}
+.buy-btn {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.buy-btn:hover {
+  background-color: #2980b9;
+  transform: translateY(-2px);
+}
+.sell-form {
+  background-color: #f8f9fa;
+  padding: 2rem;
+  border-radius: 8px;
+  margin: 2rem 0;
+  display: flex;
+  flex-direction: column;
+}
+.form-group {
+  margin-bottom: 1rem;
+  margin: 0.5rem 0;
+}
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #666;
+  font-weight: bold;
+}
+.form-group input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+.form-group input:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 0 0;
+}
+.submit-btn {
+  background-color: #2ecc71;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+.submit-btn:hover {
+  background-color: #27ae60;
+}
+.submit-btn:active {
+}
+.error-message {
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 4px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10000;
+  animation: shake 0.5s infinite;
+}
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
+@media (max-width: 768px) {
+  .cars-grid {
+    grid-template-columns: repeat(2, 1fr);
+    min-width: 800px;
   }
-  to {
-    transform: rotate(360deg);
+  .grid-container {
+    display: block;
+    min-width: auto;
+  }
+  .car-card {
+    height: 350px;
+    overflow: scroll;
+  }
+}
+@media (max-width: 480px) {
+  .cars-grid {
+    grid-template-columns: 1fr;
+    min-width: 400px;
+  }
+  .main-content {
+    padding: 1rem;
+    margin-left: -1rem;
+    margin-right: -1rem;
+  }
+  .sell-form {
+    padding: 1rem;
+    margin: 1rem -1rem;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  .App {
+    background-color: #121212;
+    color: #ffffff;
+  }
+  .car-card {
+    background-color: #1e1e1e;
+    color: #cccccc;
+    border-color: #333;
+  }
+  .price {
+    color: #888888;
+    background-color: #2d2d2d;
+  }
+  .buy-btn {
+    background-color: #444;
+    color: #aaa;
+  }
+  .form-group input {
+    background-color: #222;
+    color: #ccc;
+    border-color: #444;
+  }
+}
+@media print {
+  .navbar {
+    display: none;
+  }
+  .cars-grid {
+    display: block;
+  }
+  .car-card {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+}
+.car-card {
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(52, 152, 219, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(52, 152, 219, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(52, 152, 219, 0);
   }
 }

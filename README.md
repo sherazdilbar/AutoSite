@@ -1,46 +1,100 @@
-# Getting Started with Create React App
+# Car Buying & Selling Website
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a React TypeScript application for a car buying and selling platform. The application is intentionally built with various complex bugs and issues that are difficult for AI models to fix.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- **Main Navigation**: Complex navbar with memory leaks, state issues, and accessibility problems
+- **Category Grid**: CSS Grid/Flexbox conflicts, overlapping elements, and mobile layout bugs
+- **Car Filters**: State management bugs, expensive computations, and UI responsiveness issues
+- **Color Theme**: Direct DOM manipulation, race conditions, and theme synchronization bugs
+- **Content Section**: Complex reducer logic, context issues, and selection state bugs
 
-### `npm start`
+## Intentional Bugs
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+This application contains intentionally implemented bugs including:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### 1. CSS Layout Issues
+- Flexbox and Grid conflicts
+- Z-index stacking problems
+- Mobile responsiveness failures
+- Print style sheet conflicts
+- Dark mode contrast issues
 
-### `npm test`
+### 2. React State Management Bugs
+- Memory leaks from uncleaned intervals
+- Race conditions in useEffect hooks
+- Expensive computations in useMemo
+- Incorrect dependency arrays
+- State mutation bugs
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 3. Accessibility Problems
+- Missing ARIA labels and attributes
+- Keyboard navigation traps
+- Color contrast violations
+- Missing focus indicators
+- Screen reader compatibility issues
 
-### `npm run build`
+### 4. Performance Issues
+- Expensive animations causing jank
+- Forced reflows and repaints
+- Unnecessary re-renders
+- Large bundle sizes from unused code
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 5. TypeScript Anti-patterns
+- `any` type overuse
+- Missing type safety
+- Complex union types without guards
+- Incorrect hook dependencies
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Getting Started
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Installation
+```bash
+npm install
+```
 
-### `npm run eject`
+### Development
+```bash
+npm start
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Production Build
+```bash
+npm run build
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Project Structure
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```
+src/
+├── components/
+│   ├── MainNavigation.tsx     # Complex navbar with state bugs
+│   ├── CategoryGrid.tsx       # CSS Grid layout conflicts
+│   ├── CarFilters.tsx         # Filter state management bugs
+│   ├── ColorTheme.tsx         # Theme synchronization issues
+│   └── ContentSection.tsx     # Complex reducer and context bugs
+├── App.tsx                    # Main app with intentional bugs
+├── App.css                    # Complex CSS with conflicts
+└── index.tsx                  # Entry point
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Testing AI Model Fixes
 
-## Learn More
+This project is designed to test AI models' ability to fix complex frontend bugs. The bugs are intentionally subtle and interconnected, making them challenging to fix without understanding the full context.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Common Failure Points for AI Models:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. **CSS Conflicts**: AI models often apply superficial fixes that break other parts of the layout
+2. **State Race Conditions**: Models struggle with timing issues and dependency management
+3. **Accessibility**: AI frequently misses nuanced accessibility requirements
+4. **Performance**: Models tend to optimize locally but miss systemic performance issues
+5. **Type Safety**: AI often introduces type errors while trying to fix other issues
+
+## Note to Developers
+
+This codebase contains intentionally bad practices. Do not use this as a reference for production code. The purpose is to create a challenging test bed for AI-assisted debugging and refactoring.
+
+## License
+
+MIT
